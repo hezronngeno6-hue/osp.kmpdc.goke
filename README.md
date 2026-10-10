@@ -4,12 +4,11 @@ Static replication host for the **clinic / institution licence** record page.
 This repo is the deploy target: pushing to `main` publishes the site.
 
 - Repo: <https://github.com/hezronngeno6-hue/osp.kmpdc.goke>
-- GitHub Pages: **not enabled.** Enabling it needs a repo-admin action in
-  Settings -> Pages, because the workflow token cannot create a Pages site
-  (`403 Resource not accessible by integration`), and the API reports 404.
-- Live record therefore ships from the PPB Vercel host instead:
-  `https://poisonsandpharmacyboard.vercel.app/clinics/clinic_007174_gashe`
-  (this repo is the mirror / fallback if Pages is switched on later).
+- **Live base URL: `https://ospkmpdcgoke.vercel.app`** - Vercel project `ospkmpdcgoke`
+  deployed from this repo's `main` branch. Verified 200 for `/`,
+  `/clinics/clinic_10950_ruth` and `/clinics/clinic_007174_gashe`.
+- GitHub Pages is *not* used: enabling it needs a repo-admin action and the workflow
+  token cannot create a Pages site (`403 Resource not accessible by integration`).
 
 ## Layout
 
@@ -49,10 +48,9 @@ first distinctive word of the institution, lowercased —
 
 ## QR
 
-The QR encodes the **absolute record page URL** of whichever host is live. The
-base URL is read from `setup_config.json` (`vercel_base_url`) by
-`_gen_qr_clinic.py`, so it points at
-`https://poisonsandpharmacyboard.vercel.app/clinics/clinic_007174_gashe` today.
+The QR encodes the **absolute record page URL** on this host. `_gen_qr_clinic.py`
+reads `osp_base_url` from `setup_config.json`, so it encodes
+`https://ospkmpdcgoke.vercel.app/clinics/clinic_<reg_no>_<slug>`.
 
 ```
 python ..\_gen_qr_clinic.py <reg_no> <slug>
