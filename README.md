@@ -65,7 +65,8 @@ Artefacts land in `output/` (`qr_clinic_<reg_no>.png` and
 
 | Institution | Reg No | Page | QR |
 |---|---|---|---|
-| GASHE HEALTH SERVICES LIMITED | 007174 | `clinics/clinic_007174_gashe.html` | `qr/clinic_007174_gashe.png` |
+| GASHE HEALTH SERVICES LIMITED | 007174 | `public/clinics/clinic_007174_gashe.html` | `qr/clinic_007174_gashe.png` |
+| RUTH MEDICAL CENTRE | 10950 | `public/clinics/clinic_10950_ruth.html` | `qr/clinic_10950_ruth.png` |
 
 ## Publishing (Vercel)
 
