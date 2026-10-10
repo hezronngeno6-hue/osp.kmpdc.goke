@@ -18,7 +18,7 @@ package.json                            CLI metadata (npm run deploy)
 public/index.html                       portal landing page
 public/404.html                         fallback page
 public/clinics/clinic_<reg_no>_<slug>.html    one file per institution record
-public/photos/clinic_<reg_no>_<slug>.png      record photograph (only when the record has one)
+public/photos/clinic_<reg_no>_<slug>.jpg      record photograph (JPEG q88, only when the record has one)
 templates/template_clinic.html          source template ({{ placeholders }}) - not deployed
 qr/                                     QR artefacts (png + data uri) - not deployed
 ```
