@@ -39,13 +39,13 @@
 
         td strong { color: #009; font-weight: bold; }
 
-        /* The photograph sits in its own bordered box, ~0.90 w/h like the specimen.
-           Sized as a share of the page width to match the specimen's proportions,
-           with the image capped so it stays sane on wide screens. */
+        /* The photograph sits in its own bordered box, ~0.90 w/h like the specimen,
+           as wide as the plate (capped at 460px so it stays sane on wide screens).
+           The cell is not sized - every other row shares this single table column,
+           so the image itself carries the width. */
         .photo-cell {
             padding: 0 !important;
             vertical-align: top;
-            width: 43%;
         }
         .photo-cell img {
             display: block;
