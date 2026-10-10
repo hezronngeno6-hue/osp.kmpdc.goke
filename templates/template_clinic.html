@@ -39,36 +39,41 @@
 
         td strong { color: #009; font-weight: bold; }
 
-        /* The photograph sits in its own bordered box, ~0.90 w/h like the specimen */
+        /* The photograph sits in its own bordered box, ~0.90 w/h like the specimen.
+           Sized as a share of the page width to match the specimen's proportions,
+           with the image capped so it stays sane on wide screens. */
         .photo-cell {
             padding: 0 !important;
-            border: 1px solid #ccc;
             vertical-align: top;
-            width: 313px;
+            width: 43%;
         }
         .photo-cell img {
             display: block;
-            width: 313px;
-            height: 345px;
+            width: 100%;
+            max-width: 460px;
+            aspect-ratio: 313 / 345;
             object-fit: cover;
             background: #eee;
+            border: 1px solid #ccc;
         }
         /* Shown when {{ photo_url }} is empty - mirrors the "PHOTO NOT AVAILABLE" plate */
         .photo-cell .no-photo {
             display: none;
-            width: 313px;
-            height: 345px;
+            width: 100%;
+            max-width: 460px;
+            aspect-ratio: 313 / 345;
             background: #eee;
             border-radius: 6px;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding-top: 40px;
             color: #b9b9b9;
             font-weight: bold;
-            font-size: 22px;
+            font-size: clamp(14px, 1.8vw, 26px);
             letter-spacing: 1px;
             line-height: 1.15;
         }
-        .photo-cell.empty .no-photo { display: block; }
+        .photo-cell.empty .no-photo { display: flex; }
         .photo-cell.empty img { display: none; }
     </style>
 </head>
