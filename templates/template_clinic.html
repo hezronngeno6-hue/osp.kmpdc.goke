@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPB | Institution Licence Details</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            font-size: 15px;
+            color: #666;
+            background: #FFF;
+            width: 100%;
+            margin: 0;
+        }
+
+        table { width: 100%; border-collapse: collapse; }
+
+        /* Row 1 of the specimen: the institution name on the dark bar */
+        th {
+            background: #333;
+            color: #FFF;
+            font-weight: bold;
+            font-size: 16px;
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #333;
+        }
+
+        /* Rows 2..n: label (grey) + value (navy, bold) on a hairline separator */
+        td {
+            padding: 14px 12px;
+            border: 1px solid #e2e2e2;
+            text-align: left;
+            line-height: 1.35;
+        }
+
+        td strong { color: #009; font-weight: bold; }
+
+        /* The photograph sits in its own bordered box, ~0.90 w/h like the specimen */
+        .photo-cell {
+            padding: 0 !important;
+            border: 1px solid #ccc;
+            vertical-align: top;
+            width: 313px;
+        }
+        .photo-cell img {
+            display: block;
+            width: 313px;
+            height: 345px;
+            object-fit: cover;
+            background: #eee;
+        }
+        /* Shown when {{ photo_url }} is empty - mirrors the "PHOTO NOT AVAILABLE" plate */
+        .photo-cell .no-photo {
+            display: none;
+            width: 313px;
+            height: 345px;
+            background: #eee;
+            border-radius: 6px;
+            text-align: center;
+            padding-top: 40px;
+            color: #b9b9b9;
+            font-weight: bold;
+            font-size: 22px;
+            letter-spacing: 1px;
+            line-height: 1.15;
+        }
+        .photo-cell.empty .no-photo { display: block; }
+        .photo-cell.empty img { display: none; }
+    </style>
+</head>
+<body>
+
+    <center>
+        <table>
+            <tbody>
+                <tr>
+                    <th>{{ name }}</th>
+                </tr>
+                <tr>
+                    <td class="photo-cell{{ photo_url_class }}">
+                        <img src="{{ photo_url }}" alt="Photograph">
+                        <div class="no-photo">PHOTO<br>NOT<br>AVAILABLE</div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Licence Details</th>
+                </tr>
+                <tr><td>Reg No: <strong>{{ reg_no }}</strong></td></tr>
+                <tr><td>Licence Status: <strong>{{ licence_status }}</strong></td></tr>
+                <tr><td>Licence Number: <strong>{{ licence_number }}</strong></td></tr>
+                <tr><td>Valid Till: <strong>{{ valid_till }}</strong></td></tr>
+                <tr><td>Practice Institution: <strong>{{ practice_institution }}</strong></td></tr>
+                <tr><td>Institution Reg No: <strong>{{ institution_reg_no }}</strong></td></tr>
+                <tr><td>Discipline: <strong>{{ discipline }}</strong></td></tr>
+                <tr><td>Qualifications: <strong>{{ qualifications }}</strong></td></tr>
+                <tr><td>Issue Date: <strong>{{ issue_date }}</strong></td></tr>
+            </tbody>
+        </table>
+    </center>
+
+</body>
+</html>
