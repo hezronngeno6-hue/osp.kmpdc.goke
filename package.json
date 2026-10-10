@@ -1,0 +1,13 @@
+{
+  "name": "osp-host",
+  "version": "1.0.0",
+  "description": "Static hosting for OSP clinic/institution record pages",
+  "private": true,
+  "scripts": {
+    "start": "vercel dev",
+    "deploy": "vercel deploy --prod"
+  },
+  "devDependencies": {
+    "vercel": "^59.5.0"
+  }
+}

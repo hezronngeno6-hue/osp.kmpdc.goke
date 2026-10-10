@@ -14,12 +14,14 @@ This repo is the deploy target: pushing to `main` publishes the site.
 ## Layout
 
 ```
-index.html                              portal landing page
-404.html                                fallback page
-.nojekyll                               serve files as-is (no Jekyll build)
-clinics/clinic_<reg_no>_<slug>.html     one file per institution record
-templates/template_clinic.html          the source template ({{ placeholders }})
-qr/                                     generated QR artefacts (png + data uri)
+vercel.json                             Vercel static config (outputDirectory: public)
+package.json                            CLI metadata (npm run deploy)
+public/index.html                       portal landing page
+public/404.html                         fallback page
+public/.nojekyll                        serve files as-is (left over from the Pages attempt)
+public/clinics/clinic_<reg_no>_<slug>.html    one file per institution record
+templates/template_clinic.html          source template ({{ placeholders }}) - not deployed
+qr/                                     QR artefacts (png + data uri) - not deployed
 ```
 
 ## Record page — how it is built
@@ -65,13 +67,20 @@ Artefacts land in `output/` (`qr_clinic_<reg_no>.png` and
 |---|---|---|---|
 | GASHE HEALTH SERVICES LIMITED | 007174 | `clinics/clinic_007174_gashe.html` | `qr/clinic_007174_gashe.png` |
 
-## Publishing
+## Publishing (Vercel)
 
-```powershell
-git add -A
-git commit -m "Publish clinic_007174_gashe"
-git push origin main
-```
+The repo is import-ready: `public/` is the deployed directory and `vercel.json`
+carries the same shape as the working PPB host (clean URLs, security headers,
+`/clinics/:id` rewrite).
 
-GitHub Pages must be enabled once: **Settings → Pages → Source: Deploy from a
-branch → `main` / `(root)`**.
+1. <https://vercel.com/new> -> **Import Git Repository** ->
+   `hezronngeno6-hue/osp.kmpdc.goke`
+2. Framework preset **Other**, Root Directory `.`, Build Command empty,
+   Output Directory `public` (already declared in `vercel.json`) -> **Deploy**
+
+Every later push to `main` then deploys automatically. Add a custom domain
+(e.g. `osp.kmpdc.go.ke`) under **Settings -> Domains** if you have one.
+
+GitHub Pages is *not* used: enabling it needs a repo-admin action, and the
+workflow token cannot create a Pages site
+(`403 Resource not accessible by integration`).
